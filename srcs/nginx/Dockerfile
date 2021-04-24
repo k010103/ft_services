@@ -24,3 +24,5 @@ RUN		mv ft_server.key /etc/nginx/ssl/
 EXPOSE	80 443
 
 CMD		./nginx.sh
+
+# 한번 사용하고 안쓸내용들은 여기에.
