@@ -4,3 +4,5 @@ RUN		apk update && apk upgrade
 RUN		apk add wordpress
 
 FROM	5050
+
+CMD		wordpress.sh
