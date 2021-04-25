@@ -27,12 +27,12 @@ RUN		mkdir -p var/run/nginx
 COPY	./srcs/nginx.sh .
 
 RUN		chmod 775 nginx.sh
-CMD		["nginx.sh"]
+CMD		/nginx.sh
 
-# nginx.sh에 있는것들이 동작되도록 설정.
-# 자동으로 nginx가 실행되도록 설정.
-# localhost:80 오류해결.
-# html 적용법.
-# localhost:443 제대로 동작하는건지 확인.
-# wordpress등과 연동하는 방법 확인.
+# nginx.sh에 있는것들이 동작되도록 설정. O
+# 자동으로 nginx가 실행되도록 설정. O
+# localhost:80 오류해결. ㅁ
+# html 적용법. O
+# localhost:443 제대로 동작하는건지 확인. O
+# wordpress등과 연동하는 방법 확인. X
 
