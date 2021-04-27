@@ -1,8 +1,9 @@
 FROM	alpine:3.13
 
 RUN		apk update && apk upgrade
-RUN		apk add phpmyadmin
+RUN		apk add phpmyadmin \
+				php-fpm
 
-FROM	5000
+EXPOSE	5000
 
 

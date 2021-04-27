@@ -7,19 +7,18 @@ RUN		apk add \
 		nginx \
 		openssl
 
-# ssl 설정.
+# ssl 설정. thisisunsafe
 RUN		mkdir -p /etc/nginx/ssl
 RUN		openssl req -x509 -newkey rsa:4096 -nodes -sha256 -keyout ft_server.key -out ft_server.crt -days 365 -subj "/C=KR/ST=SEOUL/L=SEOUL/O=42Seoul/OU=gun/CN=localhost"
 RUN		mv ft_server.crt /etc/nginx/ssl/
 RUN		mv ft_server.key /etc/nginx/ssl/
 
-# html을 적용시켜볼려고 하였으나 실패.
+# html을 적용.
 COPY	./srcs/index.html /var/www/html/
 
 # nginx 설정. 80 443
 RUN		rm /etc/nginx/conf.d/*
 COPY	./srcs/nginx.conf ./etc/nginx/http.d
-
 EXPOSE	80 443
 
 # 실행을 위한 설정.
