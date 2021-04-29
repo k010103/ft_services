@@ -5,7 +5,8 @@ FROM	alpine:3.13
 RUN		apk update && apk upgrade
 RUN		apk add \
 		nginx \
-		openssl
+		openssl \
+		openssh
 
 # ssl 설정. thisisunsafe
 RUN		mkdir -p /etc/nginx/ssl
@@ -14,16 +15,20 @@ RUN		mv ft_server.crt /etc/nginx/ssl/
 RUN		mv ft_server.key /etc/nginx/ssl/
 
 # html을 적용.
-COPY	./srcs/index.html /var/www/html/
+# COPY	./srcs/index.html /var/www/html/
 
 # nginx 설정. 80 443
-RUN		rm /etc/nginx/conf.d/*
-COPY	./srcs/nginx.conf ./etc/nginx/http.d
-EXPOSE	80 443
+RUN		rm /etc/nginx/conf.d/default.conf
+COPY	./srcs/default.conf ./etc/nginx/http.d
+
+RUN		rm /etc/nginx/nginx.conf
+COPY	./srcs/nginx.conf ./etc/nginx
 
 # 실행을 위한 설정.
 RUN		mkdir -p var/run/nginx
 COPY	./srcs/nginx.sh .
+
+EXPOSE	80 443
 
 RUN		chmod 775 nginx.sh
 CMD		/nginx.sh
