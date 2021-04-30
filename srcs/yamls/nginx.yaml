@@ -1,0 +1,67 @@
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+  annotations:
+    metallb.universe.tf/allow-shared-ip: shared
+  labels:
+    app: nginx
+spec:
+  type: LoadBalancer
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+    protocol: TCP
+  - name: https
+    port: 443
+    targetPort: 443
+    protocol: TCP
+  - name: ssh
+    port: 22
+    targetPort: 22
+    protocol: TCP
+  selector:
+    app: nginx
+  externalTrafficPolicy: Cluster
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx_service
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
+          name: http
+        - containerPort: 443
+          name: https
+        - containerPort: 22
+          name: ssh
+        env:
+        - name: SSH_USER
+          value: admin
+        - name: SSH_PASSWORD
+          value: admin
+        livenessProbe:
+          tcpSocket:
+            port: 22
+          initialDelaySeconds: 15
+          periodSeconds: 10
+```
