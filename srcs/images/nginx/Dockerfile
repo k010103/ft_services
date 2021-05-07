@@ -10,7 +10,7 @@ RUN		apk add --no-cache \
 
 # ssl 설정. thisisunsafe
 RUN		mkdir -p /etc/nginx/ssl
-RUN		openssl req -x509 -newkey rsa:4096 -nodes -sha256 -keyout nginx.key -out nginx.crt -days 365 -subj "/C=KR/ST=SEOUL/L=SEOUL/O=42Seoul/OU=gun/CN=localhost"
+RUN		openssl req -x509 -newkey rsa:4096 -nodes -sha256 -keyout nginx.key -out nginx.crt -days 365 -subj "/C=KR/ST=SEOUL/L=SEOUL/O=42Seoul/OU=gun/CN=nginx"
 RUN		chmod 600 nginx.crt nginx.key
 RUN		mv nginx.key /etc/ssl/private/
 RUN		mv nginx.crt etc/ssl/certs/
