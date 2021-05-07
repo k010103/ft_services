@@ -1,5 +1,4 @@
 # 한번 사용하고 안쓸내용들은 여기에.
-
 FROM	alpine:3.13
 
 RUN		apk update && apk upgrade

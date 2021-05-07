@@ -1,11 +1,11 @@
 #setup.sh
-minikube start --driver=virtualbox
 export MINIKUBE_HOME=/goinfre/$USER/
+minikube start --driver=virtualbox
 eval $(minikube -p minikube docker-env)
 
 # file 이름을 변경.
 MINIKUBE_IP=$(minikube ip)
-sed "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/metallb/config_format.yaml > ./srcs/metallb/config.yaml
+sed "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/images/config_format.yaml > ./srcs/images/config.yaml
 
 # metalLB 설치.
 echo "metalLB start"
