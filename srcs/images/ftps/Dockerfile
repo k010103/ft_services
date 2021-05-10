@@ -9,7 +9,7 @@ RUN		openssl req -newkey rsa:4096 -nodes -x509 -keyout /etc/ssl/private/vsftps.k
 RUN	mkdir -p /ftps/user \
 &&	adduser --home=/ftps/user -D user \
 &&	chmod -R 777 /ftps/user \
-&&	echo "user:password" | chpasswd
+&&	echo "user:1234" | chpasswd
 
 EXPOSE 20 21 21100-21104
 
