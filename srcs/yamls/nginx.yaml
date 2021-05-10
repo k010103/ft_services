@@ -1,4 +1,3 @@
-```yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -64,4 +63,3 @@ spec:
             port: 22
           initialDelaySeconds: 15
           periodSeconds: 10
-```
