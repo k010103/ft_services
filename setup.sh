@@ -1,8 +1,9 @@
 #setup.sh
+export MINIKUBE_HOME=/goinfre/$USER
 minikube start --driver=virtualbox
 eval $(minikube -p minikube docker-env)
 
-# file 이름을 변경.
+# file 이름을 변경. addresses
 MINIKUBE_IP=$(minikube ip)
 sed "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/yamls/config_format.yaml > ./srcs/yamls/config.yaml
 
@@ -16,3 +17,8 @@ kubectl apply -f ./srcs/yamls/config.yaml
 echo "nginx start"
 docker build -t nginx_service ./srcs/images/nginx/
 kubectl apply -f ./srcs/yamls/nginx.yaml
+
+echo "ftps start"
+sed "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/images/ftps/srcs/vsftpd_format.conf > ./srcs/images/ftps/srcs/vsftpd.conf
+docker build -t ftps ./srcs/images/ftps/
+kubectl apply -f ./srcs/yamls/ftps.yaml
