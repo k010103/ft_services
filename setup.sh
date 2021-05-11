@@ -1,5 +1,7 @@
 #setup.sh
 export MINIKUBE_HOME=/goinfre/$USER
+brew install minikube kubectl
+brew upgrade minikube kubectl
 minikube start --driver=virtualbox
 eval $(minikube -p minikube docker-env)
 
