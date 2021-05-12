@@ -4,7 +4,7 @@ RUN		apk add --no-cache \
 		vsftpd \
 		openssl
 
-RUN		openssl req -newkey rsa:4096 -nodes -x509 -keyout /etc/ssl/private/vsftps.key -out /etc/ssl/certs/vsftps.crt -days 365 -subj "/C=KR/L=Goyang/O=42Seoul/OU=junmkang/CN=nginx"
+RUN		openssl req -newkey rsa:4096 -nodes -x509 -days 365 -subj "/C=KR/L=GUN/O=42Seoul/OU=junmkang/CN=nginx" -keyout /etc/ssl/private/vsftpd.key -out /etc/ssl/private/vsftpd.pem
 
 RUN		mkdir -p /ftps/user \
 &&		adduser --home=/ftps/user -D user \

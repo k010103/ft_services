@@ -7,7 +7,7 @@ RUN		apk add --no-cache \
 		openssh
 
 # ssl
-RUN		openssl req -newkey rsa:4096 -nodes -x509 -keyout /etc/ssl/private/nginx.key -out /etc/ssl/certs/nginx.crt -days 365 -subj "/C=KR/L=Goyang/O=42Seoul/OU=junmkang/CN=nginx" \
+RUN		openssl req -newkey rsa:4096 -nodes -x509 -keyout /etc/ssl/private/nginx.key -out /etc/ssl/certs/nginx.crt -days 365 -subj "/C=KR/L=GUN/O=42Seoul/OU=junmkang/CN=nginx" \
 &&		chmod 600 /etc/ssl/private/nginx.key /etc/ssl/certs/nginx.crt
 
 # ssh

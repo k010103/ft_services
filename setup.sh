@@ -2,8 +2,8 @@
 # "minikube delete --purge --all" and "docker system prune";
 # minikube start를 입력해야만 제대로 된 포트에 연결이 되었다고 나옴.
 export MINIKUBE_HOME=/goinfre/$USER # export 적용 방법 몰름.
-# brew install minikube kubectl
-# brew upgrade minikube kubectl
+brew install minikube kubectl
+brew upgrade minikube kubectl
 minikube start --driver=virtualbox
 eval $(minikube -p minikube docker-env)
 
@@ -26,3 +26,6 @@ echo "ftps start"
 sed "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/images/ftps/srcs/vsftpd_format.conf > ./srcs/images/ftps/srcs/vsftpd.conf
 docker build -t ftps ./srcs/images/ftps/
 kubectl apply -f ./srcs/yamls/ftps.yaml
+
+# kubectl delete -f ()
+# kubectl apply -f ()
