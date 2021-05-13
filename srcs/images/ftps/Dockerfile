@@ -15,6 +15,6 @@ RUN		mkdir -p /ftps/user \
 
 EXPOSE	20 21 21100-21104
 
-COPY	./srcs/start.sh /ftps/user/start.sh
+COPY	./srcs/ftps_setup.sh /ftps/user/ftps_setup.sh
 COPY	./srcs/test.txt /ftps/user/test.txt
-CMD		["sh", "/ftps/user/start.sh"]
+CMD		["sh", "/ftps/user/ftps_setup.sh"]
