@@ -6,6 +6,8 @@ RUN		apk add --no-cache \
 
 RUN		openssl req -newkey rsa:4096 -nodes -x509 -days 365 -subj "/C=KR/L=GUN/O=42Seoul/OU=junmkang/CN=nginx" -keyout /etc/ssl/private/vsftpd.key -out /etc/ssl/private/vsftpd.pem
 
+COPY	/srcs/vsftpd.conf /etc/vsftpd/vsftpd.conf
+
 RUN		mkdir -p /ftps/user \
 &&		adduser --home=/ftps/user -D user \
 &&		chmod -R 777 /ftps/user \

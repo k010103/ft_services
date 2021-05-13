@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #setup.sh
 # "minikube delete --purge --all" and "docker system prune";
 # minikube start를 입력해야만 제대로 된 포트에 연결이 되었다고 나옴.
