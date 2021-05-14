@@ -1,13 +1,22 @@
-FROM	alpine:3.13
+FROM	alpine:3.12
 
-RUN		apk update && apk upgrade
-RUN		apk add \
-		php7-fpm
+RUN		apk update && apk upgrade \
+&&		apk add --no-cache nginx \
+&&		mkdir -p /run/nginx
 
-#		https://wordpress.org/latest.tar.gz 경로를 찾을 수 없다고 계속해서 에러발생.
-RUN		wget https://wordpress.org/latest.tar.gz -P /tmp \
-		tar -xzf /tmp/latest.tar.gz -C /var/www;
+COPY	/srcs/nginx.conf /etc/nginx/nginx.conf
+
+RUN		apk add php7 php7-fpm php7-opcache php7-gd php7-mysqli \
+		php7-zlib php7-curl php7-mbstring php7-json php7-session
+
+RUN		wget https://wordpress.org/latest.tar.gz
+RUN		tar -xvf latest.tar.gz
+RUN		rm -f latest.tar.gz
+RUN		mv wordpress /etc/
+COPY	/srcs/wp-config.php /etc/wordpress/
+COPY	/srcs/run.sh /tmp/
+RUN		rm -rf /var/cache/apk/*
 
 EXPOSE	5050
 
-CMD		wordpress.sh
+ENTRYPOINT ["sh", "/tmp/run.sh"]
