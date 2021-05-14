@@ -14,9 +14,9 @@ RUN		tar -xvf latest.tar.gz
 RUN		rm -f latest.tar.gz
 RUN		mv wordpress /etc/
 COPY	/srcs/wp-config.php /etc/wordpress/
-COPY	/srcs/run.sh /tmp/
+COPY	/srcs/wp_setup.sh /tmp/
 RUN		rm -rf /var/cache/apk/*
 
 EXPOSE	5050
 
-ENTRYPOINT ["sh", "/tmp/run.sh"]
+ENTRYPOINT ["sh", "/tmp/wp_setup.sh"]
