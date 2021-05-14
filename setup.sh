@@ -8,6 +8,29 @@ brew install minikube kubectl
 brew upgrade minikube kubectl
 minikube start --driver=virtualbox
 eval $(minikube -p minikube docker-env)
+echo "
+                             FT_SERVICES - Kubernetes cluster
+
+                                     ╭───────╮
+                                     │ World │
+                                     ╰───┬───╯
+                                         │
+                           ╭─────────────┷──────────╮
+                           │ Load Balancer(MetalLB) │
+                           ╰─────────────┬──────────╯
+     ┌────────────┬────────────────────┬─┴────────────────────┬───────────┐
+     │3000        │5050                │80/443	              │5000       │21
+╭────┷────╮ ╭─────┷─────╮ Redirect ╭───┷───╮ Reverse... ╭─────┷──────╮ ╭──┷───╮
+│ Grafana │ │ WordPress ┠──────────┤ NginX ├────────────┨ PhpMyAdmin │ │ FTPS │
+╰─┯─────┬─╯ ╰───┬────┯──╯          ╰───┬───╯            ╰─────┬─┯────╯ ╰──┬───╯
+  │     │       │    └┐                │                      │ └┐   ┌────┘
+  │data └─────┐ │     └────────────────┼──────────────────────┼──┴───┼──────┐
+  │           │ │                      │                      │      │ data │
+  │           │ │                      │                      │     ┌┘      │
+┌─┴────────┐  │ │                      │                      │     │ ┌─────┷─┐
+│ InfluxDB ┠──┴─┴──────────────────────┴──────────────────────┴─────┴─┤ MySQL │
+└──────────┘ Metrics                                                  └───────┘
+                                                                                "
 
 # file 내용 변경. addresses format
 MINIKUBE_IP=$(minikube ip)
@@ -77,3 +100,4 @@ kubectl apply -f ./srcs/yamls/mysql.yaml
 # -> minikube로 들어가서 docker images를 통해 nginx images가 생성이 되었는지 확인하고, 생성이 되었다면,
 #	 nignx images에 들어가 nginx를 직접 실행을 시켜본다. 그로인해 나오는 error msg를 바탕으로 디버깅.
 
+zsh
