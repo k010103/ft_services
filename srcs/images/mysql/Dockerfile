@@ -9,6 +9,4 @@ COPY	/srcs/my.cnf /etc/mysql/
 COPY	/srcs/mysql-init /tmp/
 COPY	/srcs/start.sh /tmp/
 
-EXPOSE	3306
-
 ENTRYPOINT	["sh", "/tmp/start.sh"]
