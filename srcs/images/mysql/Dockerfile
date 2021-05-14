@@ -1,10 +1,6 @@
-FROM	alpine:3.13
+FROM alpine:3.12
 
-RUN		apk update && apk upgrade
-RUN		apk add \
-		mysql \
-		mysql-client \
-		mariadb
+RUN apk update
+RUN apk add mysql
 
-# RUN		mysql --version
-
+RUN mkdir -p /run/mysqld

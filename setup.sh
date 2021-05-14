@@ -68,5 +68,5 @@ kubectl apply -f ./srcs/yamls/wordpress.yaml
 
 # nginx가 CrashLoopBackOff가 발생하는것을 확인할 수 있었다. 해결방법은?
 # -> minikube로 들어가서 docker images를 통해 nginx images가 생성이 되었는지 확인하고, 생성이 되었다면,
-# -> nignx images에 들어가 nginx를 직접 실행을 시켜본다. 그로인해 나오는 error msg를 바탕으로 디버깅.
+#	 nignx images에 들어가 nginx를 직접 실행을 시켜본다. 그로인해 나오는 error msg를 바탕으로 디버깅.
 
