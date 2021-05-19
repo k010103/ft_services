@@ -17,10 +17,6 @@ spec:
     port: 443
     targetPort: 443
     protocol: TCP
-  - name: ssh
-    port: 22
-    targetPort: 22
-    protocol: TCP
   selector:
     app: nginx
   externalTrafficPolicy: Cluster
@@ -51,15 +47,3 @@ spec:
           name: http
         - containerPort: 443
           name: https
-        - containerPort: 22
-          name: ssh
-        env:
-        - name: SSH_USER
-          value: admin
-        - name: SSH_PASSWORD
-          value: admin
-        livenessProbe:
-          tcpSocket:
-            port: 22
-          initialDelaySeconds: 15
-          periodSeconds: 10
