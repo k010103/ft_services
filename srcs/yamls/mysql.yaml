@@ -11,7 +11,6 @@ spec:
   - port: 3306
     name: mysql
     targetPort: 3306
-    nodePort: 30691
   type: ClusterIP
 ---
 apiVersion: v1

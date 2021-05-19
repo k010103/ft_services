@@ -74,7 +74,7 @@ data:
      * cookie. Needs to be 32 chars long.
      */
     $cfg['blowfish_secret'] = '01234567890123456789012345678912'; /* YOU MUST FILL IN THIS FOR COOKIE AUTH! */
-    $cfg['PmaAbsoluteUri'] =  'https://192.168.99.181/phpmyadmin';
+    $cfg['PmaAbsoluteUri'] =  'https://192.168.99.193/phpmyadmin';
 
     /**
      * Servers configuration
@@ -96,6 +96,7 @@ data:
     $cfg['Servers'][$i]['password'] = 'password';
     $cfg['Servers'][$i]['compress'] = 'false';
     $cfg['Servers'][$i]['AllowNoPassword'] = 'true';
+    $cfg['PmaAbsoluteUri'] = 'phpmyadmin-service:5000/phpmyadmin';
 
     /**
      * Directories for saving/loading files from server

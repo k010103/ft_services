@@ -59,6 +59,14 @@ kubectl apply -f ./srcs/yamls/nginx.yaml
 sleep 5
 
 echo "======================================================"
+echo "----------------------mysql start---------------------"
+echo "======================================================"
+docker build -t mysql ./srcs/images/mysql/
+kubectl apply -f ./srcs/yamls/mysql.yaml
+
+sleep 5
+
+echo "======================================================"
 echo "----------------------ftps start----------------------"
 echo "======================================================"
 docker build -t ftps ./srcs/images/ftps/
@@ -82,11 +90,7 @@ kubectl apply -f ./srcs/yamls/wordpress.yaml
 
 sleep 5
 
-echo "======================================================"
-echo "----------------------mysql start---------------------"
-echo "======================================================"
-docker build -t mysql ./srcs/images/mysql/
-kubectl apply -f ./srcs/yamls/mysql.yaml
+
 
 # kubectl delete -f ()
 # kubectl apply -f ()
