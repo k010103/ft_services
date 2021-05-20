@@ -90,7 +90,11 @@ kubectl apply -f ./srcs/yamls/wordpress.yaml
 
 sleep 5
 
-
+echo "======================================================"
+echo "---------------------influxDB start-------------------"
+echo "======================================================"
+docker build -t influxdb ./srcs/images/influxDB/
+kubectl apply -f ./srcs/yamls/influxdb.yaml
 
 # kubectl delete -f ()
 # kubectl apply -f ()
