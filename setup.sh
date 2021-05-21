@@ -93,7 +93,7 @@ sleep 5
 echo "======================================================"
 echo "---------------------influxDB start-------------------"
 echo "======================================================"
-docker build -t influxdb ./srcs/images/influxDB/
+docker build -t influxdb ./srcs/images/influxdb/
 kubectl apply -f ./srcs/yamls/influxdb.yaml
 
 # kubectl delete -f ()
