@@ -2,13 +2,25 @@
 #setup.sh
 
 # "minikube delete --purge --all" and "docker system prune";
-# minikube start를 입력해야만 제대로 된 포트에 연결이 되었다고 나옴.
 export MINIKUBE_HOME=/goinfre/$USER # export 적용 방법 몰름.
 brew install minikube kubectl
 brew upgrade minikube kubectl
 minikube start --driver=virtualbox
 eval $(minikube -p minikube docker-env)
+
+# colors
+_WHITE='\033[37m'
+
+echo -e 	"\n\n $_WHITE
+███████╗████████╗     ███████╗███████╗██████╗ ██╗   ██╗██╗ ██████╗███████╗███████╗
+██╔════╝╚══██╔══╝     ██╔════╝██╔════╝██╔══██╗██║   ██║██║██╔════╝██╔════╝██╔════╝
+█████╗     ██║        ███████╗█████╗  ██████╔╝██║   ██║██║██║     █████╗  ███████╗
+██╔══╝     ██║        ╚════██║██╔══╝  ██╔══██╗╚██╗ ██╔╝██║██║     ██╔══╝  ╚════██║
+██║        ██║███████╗███████║███████╗██║  ██║ ╚████╔╝ ██║╚██████╗███████╗███████║
+╚═╝        ╚═╝╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚═╝ ╚═════╝╚══════╝╚══════╝"
+
 echo "
+
                              FT_SERVICES - Kubernetes cluster
 
                                      ╭───────╮
@@ -115,11 +127,6 @@ kubectl apply -f ./srcs/yamls/grafana.yaml
 
 # kubectl delete -f ()
 # kubectl apply -f ()
-
-# 현재 minikube가 돌아가고 있는 상황이지만 minikube stop을 했을때 minikube를 찾지못하는 경우가 있다.
-# export 를 .sh에서 적용시킬려고 하면 안되는것을 볼 수 있다.
-
-# nginx가 주기적으로 혼자 restart를 진행하는것으로 확인이 된다. 왜 그런건지, 문제점을 찾을려면 어떻게 해야할지,
 
 # nginx가 CrashLoopBackOff가 발생하는것을 확인할 수 있었다. 해결방법은?
 # -> minikube로 들어가서 docker images를 통해 nginx images가 생성이 되었는지 확인하고, 생성이 되었다면,
