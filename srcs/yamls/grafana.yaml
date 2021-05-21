@@ -106,7 +106,7 @@ data:
     ;enforce_domain = false
     # The full public facing url you use in browser, used for redirects and emails
     # If you use reverse proxy and sub path specify full url (with sub path)
-    root_url = http://192.168.99.211:3000
+    root_url = http://192.168.99.213:3000
     # Log web requests
     ;router_logging = false
     # the path relative working path
@@ -178,9 +178,9 @@ data:
     #################################### Security ####################################
     [security]
     # default admin user, created on startup
-    ;admin_user = junmkang
+    ;admin_user = admin
     # default admin password, can be changed before first start of grafana,  or in profile settings
-    ;admin_password = 1234
+    ;admin_password = admin
     # used for signing
     ;secret_key = SW2YcwTIb9zpOOhoPsMm
     # Auto-login remember days
