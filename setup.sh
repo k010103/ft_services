@@ -38,6 +38,7 @@ sed "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/yamls/config_format.yaml > ./srcs/yaml
 sed "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/images/nginx/srcs/nginx_format.conf > ./srcs/images/nginx/srcs/nginx.conf
 sed "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/images/ftps/srcs/vsftpd_format.conf > ./srcs/images/ftps/srcs/vsftpd.conf
 sed "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/yamls/phpmyadmin_format.yaml > ./srcs/yamls/phpmyadmin.yaml
+sed "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/yamls/grafana_format.yaml > ./srcs/yamls/grafana.yaml
 
 # metalLB 설치.
 echo "====================================================="
@@ -95,6 +96,22 @@ echo "---------------------influxDB start-------------------"
 echo "======================================================"
 docker build -t influxdb ./srcs/images/influxdb/
 kubectl apply -f ./srcs/yamls/influxdb.yaml
+
+sleep 5
+
+echo "======================================================"
+echo "---------------------telegraf start-------------------"
+echo "======================================================"
+docker build -t telegraf ./srcs/images/telegraf/
+kubectl apply -f ./srcs/yamls/telegraf.yaml
+
+sleep 5
+
+echo "======================================================"
+echo "---------------------grafana start--------------------"
+echo "======================================================"
+docker build -t grafana ./srcs/images/grafana/
+kubectl apply -f ./srcs/yamls/grafana.yaml
 
 # kubectl delete -f ()
 # kubectl apply -f ()
