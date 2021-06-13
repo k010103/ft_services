@@ -6,4 +6,8 @@ COPY	/srcs/datasources.yaml /usr/share/grafana/conf/provisioning/datasources/
 
 EXPOSE 3000
 
-ENTRYPOINT ["/usr/sbin/grafana-server", "--config=/etc/grafana/grafana.ini", "--homepath=/usr/share/grafana"]
+ADD srcs/entrypoint.sh /
+RUN chmod +x entrypoint.sh
+ENTRYPOINT [ "/entrypoint.sh" ]
+
+# ENTRYPOINT ["/usr/sbin/grafana-server", "--config=/etc/grafana/grafana.ini", "--homepath=/usr/share/grafana"]
