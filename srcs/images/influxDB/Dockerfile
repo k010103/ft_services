@@ -4,4 +4,4 @@ RUN	apk add influxdb --no-cache
 
 CMD 	influxd run -config /etc/influxdb.conf
 
-ENTRYPOINT	["/usr/sbin/influxdb"]
+ENTRYPOINT	["/usr/sbin/influxd"]
