@@ -58,8 +58,6 @@ metadata:
   labels:
     app: grafana
 type: Opaque
-stringData:
-  GF_SECURITY_ADMIN_PASSWORD: password
 ---
 apiVersion: v1
 kind: ConfigMap
