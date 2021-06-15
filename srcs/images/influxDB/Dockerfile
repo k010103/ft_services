@@ -1,7 +1,14 @@
-FROM	alpine:3.12
+FROM alpine:3.12
 
-RUN		sed -i "s/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g" /etc/apk/repositories
+RUN apk update && apk upgrade
 
-RUN	apk add influxdb --no-cache
+# install influxdb
+RUN apk add influxdb
 
-ENTRYPOINT	["/usr/sbin/influxd"]
+# influx config
+COPY ./srcs/influxdb.conf /etc/
+
+# expose a port
+EXPOSE 8086
+
+CMD ["/usr/sbin/influxd"]
