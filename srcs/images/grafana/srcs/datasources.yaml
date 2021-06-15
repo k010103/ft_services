@@ -3,7 +3,7 @@ datasources:
 - name: influxdb
   orgId: 1
   type: influxdb
-  access: Proxy
+  access: proxy
   url: http://influxdb-service:8086
   database: telegraf
   isDefault: false

@@ -6,6 +6,7 @@ export MINIKUBE_HOME=/goinfre/$USER
 brew install minikube kubectl
 brew upgrade minikube kubectl
 minikube start --driver=virtualbox
+minikube dashboard &
 eval $(minikube -p minikube docker-env)
 
 # colors
@@ -74,7 +75,6 @@ kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manife
 kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
 kubectl apply -f ./srcs/yamls/config.yaml
 
-sleep 5
 
 echo -e $_YELLOW "
       =====================================================
@@ -83,7 +83,6 @@ echo -e $_YELLOW "
 docker build -t nginx_service ./srcs/images/nginx/
 kubectl apply -f ./srcs/yamls/nginx.yaml
 
-sleep 5
 
 echo -e $_PURPLE "
       ======================================================
@@ -92,7 +91,6 @@ echo -e $_PURPLE "
 docker build -t mysql ./srcs/images/mysql/
 kubectl apply -f ./srcs/yamls/mysql.yaml
 
-sleep 5
 
 echo -e $_BLUE "
       ======================================================
@@ -101,7 +99,6 @@ echo -e $_BLUE "
 docker build -t ftps ./srcs/images/ftps/
 kubectl apply -f ./srcs/yamls/ftps.yaml
 
-sleep 5
 
 echo -e $_BLUE "
       ======================================================
@@ -110,7 +107,6 @@ echo -e $_BLUE "
 docker build -t phpmyadmin ./srcs/images/phpmyadmin/
 kubectl apply -f ./srcs/yamls/phpmyadmin.yaml
 
-sleep 5
 
 echo -e $_GREEN "
       ======================================================
@@ -119,7 +115,6 @@ echo -e $_GREEN "
 docker build -t wordpress ./srcs/images/wordpress/
 kubectl apply -f ./srcs/yamls/wordpress.yaml
 
-sleep 5
 
 echo -e $_PURPLE "
 =====================================================================
@@ -135,7 +130,6 @@ echo -e $_PURPLE "
 docker build -t influxdb ./srcs/images/influxdb/
 kubectl apply -f ./srcs/yamls/influxdb.yaml
 
-sleep 5
 
 echo -e $_GREEN "
       ======================================================
@@ -144,7 +138,6 @@ echo -e $_GREEN "
 docker build -t telegraf ./srcs/images/telegraf/
 kubectl apply -f ./srcs/yamls/telegraf.yaml
 
-sleep 5
 
 echo -e $_YELLOW "
       ======================================================
