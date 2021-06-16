@@ -63,6 +63,7 @@ sed "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/images/nginx/srcs/nginx_format.conf > 
 sed "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/images/ftps/srcs/vsftpd_format.conf > ./srcs/images/ftps/srcs/vsftpd.conf
 sed "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/yamls/phpmyadmin_format.yaml > ./srcs/yamls/phpmyadmin.yaml
 sed "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/yamls/grafana_format.yaml > ./srcs/yamls/grafana.yaml
+sed "s/MINIKUBE_IP/$MINIKUBE_IP/g" ./srcs/images/mysql/srcs/wordpress_format.sql > ./srcs/images/mysql/srcs/wordpress.sql
 
 # metalLB 설치.
 echo -e $_RED "

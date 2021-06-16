@@ -18,6 +18,13 @@ RUN		wget https://files.phpmyadmin.net/phpMyAdmin/4.9.5/phpMyAdmin-4.9.5-all-lan
 RUN		tar -xvf /phpMyAdmin-4.9.5-all-languages.tar.gz
 RUN		rm -f /phpMyAdmin-4.9.5-all-languages.tar.gz
 RUN		mv /phpMyAdmin-4.9.5-all-languages /usr/share/phpmyadmin
+
+RUN		adduser -D -g 'www' www \
+&&		mkdir /www \
+&&		chown -R www:www /var/lib/nginx \
+&&		chown -R www:www /www \
+&&		mkdir -p /run/nginx
+
 #	--no-cache
 RUN		rm -rf /var/cache/apk/*
 #	symbolic link
