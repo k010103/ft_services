@@ -40,3 +40,10 @@ spec:
         ports:
         - containerPort: 5050
           name: wordpress
+        livenessProbe:
+          exec:
+            command:
+              - sh
+              - healthcheck.sh
+          initialDelaySeconds: 10
+          periodSeconds: 10

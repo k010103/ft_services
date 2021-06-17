@@ -45,6 +45,13 @@ spec:
               subPath: config.inc.php
               mountPath: /usr/share/phpmyadmin/config.inc.php
               readOnly: true
+          livenessProbe:
+            exec:
+              command:
+                - sh
+                - healthcheck.sh
+            initialDelaySeconds: 10
+            periodSeconds: 10
       volumes:
         - name: phpmyadmin-config
           configMap:
