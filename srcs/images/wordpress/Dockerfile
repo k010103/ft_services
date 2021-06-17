@@ -30,6 +30,10 @@ RUN		rm -rf /var/cache/apk/*
 COPY ./srcs/healthcheck.sh /
 RUN chmod -u+x ./healthcheck.sh
 
+# RUN		chown -R /var/www/wordpress
+
+# RUN chomd
+
 EXPOSE	5050
 
 ENTRYPOINT ["sh", "/tmp/wp_setup.sh"]

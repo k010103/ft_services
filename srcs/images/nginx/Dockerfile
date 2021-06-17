@@ -18,6 +18,7 @@ RUN		adduser -D -g 'www' www \
 &&		chown -R www:www /var/lib/nginx \
 &&		chown -R www:www /www \
 &&		mkdir -p /run/nginx
+
 # &&		sed 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' -i /etc/ssh/sshd_config \
 # &&		echo 'root:junmkang' | chpasswd \
 # &&		ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa \

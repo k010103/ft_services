@@ -34,6 +34,8 @@ RUN		ln -s /usr/share/phpmyadmin /var/www/html
 COPY ./srcs/healthcheck.sh /
 RUN chmod -u+x ./healthcheck.sh
 
+# RUN		chown -R /var/www/phpmyadmin
+
 EXPOSE	5000
 
 COPY	/srcs/php_setup.sh ./php_setup.sh
