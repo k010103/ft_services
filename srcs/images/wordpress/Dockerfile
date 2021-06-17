@@ -23,6 +23,7 @@ RUN		rm -f latest.tar.gz
 RUN		mv wordpress /etc/
 COPY	/srcs/wp-config.php /etc/wordpress/
 COPY	/srcs/wp_setup.sh /tmp/
+RUN		chmod +x /tmp/wp_setup.sh
 RUN		rm -rf /var/cache/apk/*
 
 EXPOSE	5050

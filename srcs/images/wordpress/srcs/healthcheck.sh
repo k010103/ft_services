@@ -1,3 +1,4 @@
 #!/bin/sh
-ps | grep php-fpm| grep -v grep
+
+ps | grep php-php7| grep -v grep
 return $?

@@ -33,4 +33,5 @@ RUN		ln -s /usr/share/phpmyadmin /var/www/html
 EXPOSE	5000
 
 COPY	/srcs/php_setup.sh ./php_setup.sh
+RUN		chmod +x php_setup.sh
 CMD		sh ./php_setup.sh

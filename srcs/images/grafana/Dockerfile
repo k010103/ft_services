@@ -9,7 +9,7 @@ COPY ./srcs/datasource.yaml /usr/share/grafana/conf/provisioning/datasources/
 
 # set dashboards
 RUN mkdir -p /var/lib/grafana/dashboards
-# COPY ./dashboards /var/lib/grafana/dashboards/
+COPY ./dashboards /var/lib/grafana/dashboards/
 COPY ./srcs/dashboards.yaml /usr/share/grafana/conf/provisioning/dashboards/
 
 ADD srcs/entrypoint.sh /
