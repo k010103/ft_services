@@ -30,6 +30,10 @@ RUN		rm -rf /var/cache/apk/*
 #	symbolic link
 RUN		ln -s /usr/share/phpmyadmin /var/www/html
 
+# healthcheck set
+COPY ./srcs/healthcheck.sh /
+RUN chmod -u+x ./healthcheck.sh
+
 EXPOSE	5000
 
 COPY	/srcs/php_setup.sh ./php_setup.sh

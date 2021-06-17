@@ -26,6 +26,10 @@ COPY	/srcs/wp_setup.sh /tmp/
 RUN		chmod +x /tmp/wp_setup.sh
 RUN		rm -rf /var/cache/apk/*
 
+# healthcheck set
+COPY ./srcs/healthcheck.sh /
+RUN chmod -u+x ./healthcheck.sh
+
 EXPOSE	5050
 
 ENTRYPOINT ["sh", "/tmp/wp_setup.sh"]
