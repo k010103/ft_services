@@ -103,7 +103,6 @@ data:
     $cfg['Servers'][$i]['password'] = 'password';
     $cfg['Servers'][$i]['compress'] = 'false';
     $cfg['Servers'][$i]['AllowNoPassword'] = 'true';
-    $cfg['PmaAbsoluteUri'] = 'phpmyadmin-service:5000/phpmyadmin';
 
     /**
      * Directories for saving/loading files from server

@@ -28,13 +28,17 @@ RUN		adduser -D -g 'www' www \
 #	--no-cache
 RUN		rm -rf /var/cache/apk/*
 #	symbolic link
-RUN		ln -s /usr/share/phpmyadmin /var/www/html
+RUN		ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin
 
 # healthcheck set
 COPY ./srcs/healthcheck.sh /
 RUN chmod -u+x ./healthcheck.sh
 
-RUN		chown -R /var/www/phpmyadmin
+# RUN		chown -R www:www /var/www/phpmyadmin
+
+
+# COPY test.html /var/www/html/
+# RUN chmod 777 /var/www/html/test.html
 
 EXPOSE	5000
 

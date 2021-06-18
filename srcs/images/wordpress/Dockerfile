@@ -20,8 +20,8 @@ RUN		adduser -D -g 'www' www \
 RUN		wget https://wordpress.org/latest.tar.gz
 RUN		tar -xvf latest.tar.gz
 RUN		rm -f latest.tar.gz
-RUN		mv wordpress /etc/
-COPY	/srcs/wp-config.php /etc/wordpress/
+RUN		mv wordpress /www/
+COPY	/srcs/wp-config.php /www/wordpress/
 COPY	/srcs/wp_setup.sh /tmp/
 RUN		chmod +x /tmp/wp_setup.sh
 RUN		rm -rf /var/cache/apk/*
@@ -30,7 +30,7 @@ RUN		rm -rf /var/cache/apk/*
 COPY ./srcs/healthcheck.sh /
 RUN chmod -u+x ./healthcheck.sh
 
-RUN		chown -R /var/www/wordpress
+# RUN		chown -R www:www /var/www/wordpress
 
 # RUN chomd
 
