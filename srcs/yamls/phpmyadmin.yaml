@@ -81,7 +81,7 @@ data:
      * cookie. Needs to be 32 chars long.
      */
     $cfg['blowfish_secret'] = '01234567890123456789012345678912'; /* YOU MUST FILL IN THIS FOR COOKIE AUTH! */
-    $cfg['PmaAbsoluteUri'] =  'https://192.168.99.252/phpmyadmin';
+    $cfg['PmaAbsoluteUri'] =  'https://192.168.99.254/phpmyadmin';
 
     /**
      * Servers configuration
