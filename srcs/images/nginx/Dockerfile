@@ -19,16 +19,10 @@ RUN		adduser -D -g 'www' www \
 &&		chown -R www:www /www \
 &&		mkdir -p /run/nginx
 
-# &&		sed 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' -i /etc/ssh/sshd_config \
-# &&		echo 'root:junmkang' | chpasswd \
-# &&		ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa \
-# &&		ssh-keygen -f /etc/ssh/ssh_host_dsa_key -N '' -t dsa \
-# &&		echo "Port 22" >> /etc/ssh/sshd_config \
-# &&		mkdir -p /var/run/sshd
-
 COPY	./srcs/index.html /www/index.html
 COPY	./srcs/nginx.conf /etc/nginx/nginx.conf
 COPY	./srcs/default.conf /etc/nginx/conf.d/default.conf
+# COPY	./srcs/nginx_service.conf /etc/nginx/conf.d/nginx_service.conf
 COPY	./srcs/nginx_setup.sh .
 
 RUN	chmod +x nginx_setup.sh
