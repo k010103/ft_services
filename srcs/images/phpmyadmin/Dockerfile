@@ -23,6 +23,8 @@ RUN		rm -f /phpMyAdmin-5.0.4-all-languages.tar.gz
 RUN		mkdir -p /www/
 RUN		mv /phpMyAdmin-5.0.4-all-languages /www/phpmyadmin
 
+RUN		mkdir -p /www/phpmyadmin/tmp/
+RUN		chmod 777 /www/phpmyadmin/tmp/
 # RUN		adduser -D -g 'www' www \
 # &&		mkdir /www \
 # &&		chown -R www:www /var/lib/nginx \
