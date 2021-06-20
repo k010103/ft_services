@@ -43,7 +43,7 @@ spec:
           volumeMounts:
             - name: phpmyadmin-config
               subPath: config.inc.php
-              mountPath: /usr/share/phpmyadmin/config.inc.php
+              mountPath: /www/phpmyadmin/config.inc.php
               readOnly: true
           livenessProbe:
             exec:
