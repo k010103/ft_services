@@ -103,6 +103,7 @@ data:
     $cfg['Servers'][$i]['password'] = 'password';
     $cfg['Servers'][$i]['compress'] = 'false';
     $cfg['Servers'][$i]['AllowNoPassword'] = 'true';
+    $cfg['Servers'][$i]['auth_type'] = 'http';
 
     /**
      * Directories for saving/loading files from server
