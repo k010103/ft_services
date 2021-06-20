@@ -21,7 +21,9 @@ RUN		apk add php7 php7-fpm php7-opcache php7-gd php7-mysqli \
 RUN		wget https://wordpress.org/latest.tar.gz
 RUN		tar -xvf latest.tar.gz
 RUN		rm -f latest.tar.gz
-RUN		mv wordpress /www/
+RUN		mkdir -p /www/wordpress
+RUN		mv wordpress/* /www/wordpress/
+RUN		rm -rf wordpress
 COPY	/srcs/wp-config.php /www/wordpress
 
 RUN		rm -rf /var/cache/apk/*
@@ -33,10 +35,6 @@ RUN		chmod +x ./tmp/wp_setup.sh
 # healthcheck set
 COPY ./srcs/healthcheck.sh /
 RUN chmod -u+x ./healthcheck.sh
-
-# RUN		chown -R www:www /var/www/wordpress
-
-# RUN chomd
 
 EXPOSE	5050
 

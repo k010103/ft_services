@@ -13,4 +13,6 @@ COPY	/srcs/mysql-init /tmp/
 COPY	/srcs/start.sh /tmp/
 COPY	./srcs/wordpress.sql .
 
+RUN		chmod +x /tmp/start.sh
+
 ENTRYPOINT	["sh", "/tmp/start.sh"]
