@@ -22,10 +22,13 @@ RUN		wget https://wordpress.org/latest.tar.gz
 RUN		tar -xvf latest.tar.gz
 RUN		rm -f latest.tar.gz
 RUN		mv wordpress /www/
-COPY	/srcs/wp-config.php /www/wordpress/
-COPY	/srcs/wp_setup.sh /tmp/
-RUN		chmod +x /tmp/wp_setup.sh
+COPY	/srcs/wp-config.php /www/wordpress
+
 RUN		rm -rf /var/cache/apk/*
+
+# wp-setup
+COPY	/srcs/wp_setup.sh ./tmp/
+RUN		chmod +x ./tmp/wp_setup.sh
 
 # healthcheck set
 COPY ./srcs/healthcheck.sh /
@@ -37,4 +40,4 @@ RUN chmod -u+x ./healthcheck.sh
 
 EXPOSE	5050
 
-ENTRYPOINT ["sh", "/tmp/wp_setup.sh"]
+CMD ["sh", "./tmp/wp_setup.sh"]

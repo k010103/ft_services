@@ -1,4 +1,4 @@
 #!/bin/sh
 
-ps | grep nginx | grep -v grep
+ps | grep php-fpm7 | grep -v grep
 return $?
