@@ -6,7 +6,7 @@ RUN apk update && apk upgrade
 RUN apk add influxdb
 
 # influx config
-COPY ./srcs/influxdb.conf /etc/
+COPY ./srcs/influxdb.conf /etc/influxdb/
 
 # expose a port
 EXPOSE 8086
